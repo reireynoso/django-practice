@@ -3,5 +3,5 @@ from AppTwo import views
 
 urlpatterns = [
     # path("", views.index, name="index"),
-    path("", views.help, name="help"),
+    path("", views.users, name="users"),
 ]
