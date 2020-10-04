@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Base</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+    {% comment %} all these things are to shoow throughout the app {% endcomment %}
+       <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="navbar-brand" href="{% url 'index' %}">
+                            Brand
+                        </a>
+                    </li>
+                    <li>
+                        <a class="navbar-link" href="{% url 'admin:index' %}">
+                            Admin
+                        </a>
+                    </li>
+                    <li>
+                        <a class="navbar-link" href="{% url 'basic_app:other' %}">
+                            Other
+                        </a>
+                    </li>
+                </ul>
+            </div>
+       </nav>
+
+       <div class="container">
+            {% comment %} setup templates tags {% endcomment %}
+            {% block body_block %}
+            {% comment %} anything outside of this will be inherited if you extend {% endcomment %}
+            {% endblock %}
+       </div>
+    </body>
+</html>
