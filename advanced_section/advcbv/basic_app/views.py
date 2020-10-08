@@ -2,8 +2,15 @@ from django import http
 from django.http.response import HttpResponse
 from django.shortcuts import render
 # from django.views.generic import View
-from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic import (View, 
+                                TemplateView, 
+                                ListView, 
+                                DetailView, 
+                                CreateView, 
+                                UpdateView, 
+                                DeleteView)
 from basic_app import models
+from django.urls import reverse_lazy
 # from django.http import HttpResponse
 # Create your views here.
 # def index(request):
@@ -36,3 +43,17 @@ class SchoolDetailView(DetailView):
     model = models.School
     template_name = 'basic_app/school_detail.html'
     # under the hood, DetailView is creating the school variable
+
+class SchoolCreateView(CreateView):
+    # provide fields for the form
+    fields = ('name','principal', 'location')
+    model = models.School 
+
+class SchoolUpdateView(UpdateView):
+    fields = ('name', 'principal')
+    model = models.School
+
+class SchoolDeleteView(DeleteView):
+    model = models.School 
+    # once successfully deleted, redirect to the list page of the basic app and show all the schools
+    success_url = reverse_lazy("basic_app:list")
