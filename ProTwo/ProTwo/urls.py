@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from AppTwo import views
+from django.conf import settings
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -24,3 +25,9 @@ urlpatterns = [
     # path("formpage/", views.users),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls))
+    ] + urlpatterns
